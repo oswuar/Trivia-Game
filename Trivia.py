@@ -23,9 +23,9 @@ COLOR_BOTON = "#3498db"
 COLOR_CORRECTO = "#2ecc71"
 COLOR_INCORRECTO = "#e74c3c"
 
-ARCHIVO_SONIDO_CORRECTO = "martillo.wav"
+ARCHIVO_SONIDO_CORRECTO = "sound.wav"
 ARCHIVO_SONIDO_INCORRECTO = "fuego.wav"
-ARCHIVO_SONIDO_INICIO_TRIVIA = "explosion.wav"
+ARCHIVO_SONIDO_INICIO_TRIVIA = "sound2.wav"
 ARCHIVO_MUSICA_TRIVIA = "music.mp3"
 ARCHIVO_MUSICA_MENU = "music.mp3"
 
@@ -193,6 +193,7 @@ class TriviaGUI:
             print(f"Ocurrió un error al cargar las imágenes: {e}")
 
         # --- Variables del juego y contenedor ---
+        self.num_preguntas = 20   # <--- NUEVO: por defecto 20
         self.preguntas = obtener_preguntas()
         self.puntuacion = 0
         self.pregunta_actual_idx = 0
@@ -202,17 +203,16 @@ class TriviaGUI:
         self.volumen_musica = 0.5
         pygame.mixer.music.set_volume(self.volumen_musica)
         
-        ### Creamos la barra de volumen una sola vez y de forma fija ###
-        # Se crea sobre self.root para que no se borre
+        # Barra de volumen fija
         slider_volumen = tk.Scale(self.root, from_=0.0, to=1.0, resolution=0.01,
                                  orient="horizontal", length=200, bg=COLOR_FONDO, fg=COLOR_TEXTO,
                                  command=self.actualizar_volumen, troughcolor="#34495e", relief=tk.FLAT)
         slider_volumen.set(self.volumen_musica)
-        slider_volumen.place(x=20, y=550) # Posición fija en la esquina inferior izquierda
+        slider_volumen.place(x=20, y=550)
 
         label_volumen = tk.Label(self.root, text="Volumen", font=self.fuente_opcion,
                                  bg=COLOR_FONDO, fg=COLOR_TEXTO)
-        label_volumen.place(x=20, y=525) # Posición fija
+        label_volumen.place(x=20, y=525)
 
         self.mostrar_panel_bienvenida()
 
@@ -254,15 +254,24 @@ class TriviaGUI:
         canvas.create_text(400, 300, text="Trivia de Redes", font=self.fuente_titulo, fill=COLOR_TEXTO)
         canvas.create_text(400, 350, text="¡Pon a prueba tus conocimientos!", font=self.fuente_subtitulo, fill=COLOR_TEXTO)
 
-        def on_comenzar_click():
+        # --- NUEVO: dos botones para elegir 10 o 20 preguntas ---
+        def iniciar_con(n):
+            self.num_preguntas = n
             if self.sonido_inicio_trivia:
                 self.sonido_inicio_trivia.play()
             self.root.after(300, self.comenzar_juego)
 
-        boton_comenzar = tk.Button(canvas, text="Comenzar", font=self.fuente_boton, bg=COLOR_BOTON_COMENZAR,
-                                  fg="#FFFFFF", command=on_comenzar_click, relief=tk.FLAT)
-        canvas.create_window(400, 425, anchor="center", window=boton_comenzar, width=200, height=50)
-        
+        boton_10 = tk.Button(canvas, text="Jugar 10 Preguntas", font=self.fuente_boton,
+                             bg=COLOR_BOTON_COMENZAR, fg="#FFFFFF",
+                             command=lambda: iniciar_con(10), relief=tk.FLAT)
+        canvas.create_window(400, 410, anchor="center", window=boton_10, width=220, height=50)
+
+        boton_20 = tk.Button(canvas, text="Jugar 20 Preguntas", font=self.fuente_boton,
+                             bg=COLOR_BOTON, fg="#FFFFFF",
+                             command=lambda: iniciar_con(20), relief=tk.FLAT)
+        canvas.create_window(400, 470, anchor="center", window=boton_20, width=220, height=50)
+        # --- FIN NUEVO ---
+
     def comenzar_juego(self):
         self.limpiar_frame()
         self.detener_musica()
@@ -270,7 +279,14 @@ class TriviaGUI:
 
         self.puntuacion = 0
         self.pregunta_actual_idx = 0
-        random.shuffle(self.preguntas)
+
+        # --- NUEVO: seleccionar cantidad según elección ---
+        todas = obtener_preguntas()  # ya vienen barajadas
+        if self.num_preguntas == 10:
+            self.preguntas = todas[:10]
+        else:
+            self.preguntas = todas
+        # --- FIN NUEVO ---
 
         # interfaz del juego 
         self.label_avatar = tk.Label(self.frame_contenedor, bg=COLOR_FONDO)
@@ -314,12 +330,10 @@ class TriviaGUI:
         for opcion in pregunta_dic["opciones"]:
             boton = tk.Button(self.frame_opciones, text=opcion, font=self.fuente_opcion,
                               bg=COLOR_BOTON, fg=COLOR_TEXTO, width=60, pady=10,
-                              ### El botón llama directamente a verificar_respuesta ###
                               command=lambda opt=opcion: self.verificar_respuesta(opt))
             boton.pack(fill="x", pady=5)
 
     def verificar_respuesta(self, respuesta_elegida):
-        # Deshabilitamos botones para evitar clics múltiples
         for widget in self.frame_opciones.winfo_children():
             widget.config(state="disabled")
 
@@ -333,11 +347,9 @@ class TriviaGUI:
                 self.sonido_correcto.play()
         else:
             self.label_feedback.config(text=f"Incorrecto. La respuesta correcta era:\n{respuesta_correcta}", fg=COLOR_INCORRECTO)
-            ### Reproducir sonido de respuesta incorrecta ###
             if self.sonido_incorrecto:
                 self.sonido_incorrecto.play()
 
-        # Resaltar la respuesta correcta/incorrecta
         for widget in self.frame_opciones.winfo_children():
             if widget['text'] == respuesta_correcta:
                 widget.config(bg=COLOR_CORRECTO)
