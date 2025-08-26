@@ -34,207 +34,207 @@ pygame.mixer.init()
 
 def obtener_preguntas():
     preguntas = [
-    {
-        "pregunta": "¿Qué organización creó el modelo TCP/IP?",
-        "opciones": [
-            "Organización Internacional de Estandarización (ISO)",
-            "Agencia de Proyectos de Investigación Avanzada para la Defensa (DARPA)",
-            "Instituto de Ingenieros Eléctricos y Electrónicos (IEEE)",
-            "Unión Internacional de Telecomunicaciones (ITU)"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿Para qué tipo de redes es apropiado el modelo TCP/IP?",
-        "opciones": [
-            "Solo para redes LAN",
-            "Solo para redes WAN",
-            "Tanto para redes LAN como WAN",
-            "Solo para redes inalámbricas"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué dispositivo utiliza el modelo TCP/IP como herramienta de configuración según la presentación?",
-        "opciones": [
-            "Switch",
-            "Firewall",
-            "Router",
-            "Hub"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué se agrega a los datos en cada capa durante la encapsulación en el modelo TCP/IP?",
-        "opciones": [
-            "Solo los datos originales",
-            "Sistema de encriptación",
-            "Información de control para el envío correcto",
-            "Contenido multimedia adicional"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué capa del modelo TCP/IP incluye los protocolos TCP y UDP?",
-        "opciones": [
-            "Capa de Aplicación",
-            "Capa de Transporte",
-            "Capa de Internet",
-            "Capa de Acceso a la Red"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿Qué función realiza TCP mediante 'ventanas deslizantes'?",
-        "opciones": [
-            "Encriptación de datos",
-            "Control de flujo",
-            "Traducción de direcciones",
-            "Compresión de archivos"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿Qué proporciona la confiabilidad en las transmisiones TCP?",
-        "opciones": [
-            "Firmas digitales",
-            "Números de secuencia y acuses de recibo",
-            "Encriptación AES",
-            "Balanceo de carga"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿De qué es independiente el modelo TCP/IP según la presentación?",
-        "opciones": [
-            "Solo del hardware",
-            "Solo del software",
-            "Del hardware, software, medio de comunicación y tipo de enlace",
-            "Solo del tipo de enlace"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué protocolo opera en la capa de Internet del modelo TCP/IP?",
-        "opciones": [
-            "HTTP",
-            "FTP",
-            "IP",
-            "SMTP"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué característica hace que TCP/IP esté disponible universalmente?",
-        "opciones": [
-            "Es propietario de Microsoft",
-            "Solo funciona con equipos específicos",
-            "Es un estándar abierto e independiente de plataforma",
-            "Requiere licencia costosa"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "Durante la encapsulación, ¿qué sucede con los datos al pasar por cada capa?",
-        "opciones": [
-            "Se comprimen automáticamente",
-            "Se dividen en paquetes más pequeños",
-            "Se les agrega información de control específica",
-            "Se convierten a formato binario"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué tipo de control implementa TCP para gestionar la transmisión de datos?",
-        "opciones": [
-            "Control de acceso al medio",
-            "Control de congestión mediante tokens",
-            "Control de flujo con ventanas deslizantes",
-            "Control de errores con paridad"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Qué elemento se menciona como fundamental para la confiabilidad en TCP?",
-        "opciones": [
-            "Cifrado de extremo a extremo",
-            "Números de secuencia y acuses de recibo",
-            "Redundancia de paquetes",
-            "Verificación de integridad CRC"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿Qué capa del modelo TCP/IP corresponde a la capa de Aplicación?",
-        "opciones": [
-            "Capa 1",
-            "Capa 2",
-            "Capa 3",
-            "Capa 4"
-        ],
-        "respuesta_correcta": 1
-    },
-    {
-        "pregunta": "¿Qué protocolo de transporte NO se menciona en la presentación?",
-        "opciones": [
-            "TCP",
-            "UDP",
-            "FTP",
-            "Ambos TCP y UDP se mencionan"
-        ],
-        "respuesta_correcta": 3
-    },
-    {
-        "pregunta": "¿Cuál es el propósito principal de la información de control agregada durante la encapsulación?",
-        "opciones": [
-            "Aumentar el tamaño de los datos",
-            "Garantizar que el envío sea correcto",
-            "Mejorar la velocidad de transmisión",
-            "Agregar capacidades multimedia"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿Qué característica permite al modelo TCP/IP funcionar en diversos entornos?",
-        "opciones": [
-            "Dependencia de hardware específico",
-            "Independencia de plataforma y medios",
-            "Uso exclusivo de fibra óptica",
-            "Compatibilidad solo con routers Cisco"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "En el contexto de TCP, ¿qué son los 'acuses de recibo'?",
-        "opciones": [
-            "Confirmaciones de entrega de paquetes",
-            "Sistemas de encriptación",
-            "Protocolos de enrutamiento",
-            "Mecanismos de compresión"
-        ],
-        "respuesta_correcta": 1
-    },
-    {
-        "pregunta": "¿Qué capa procesa los números de secuencia y acuses de recibo en TCP?",
-        "opciones": [
-            "Capa de Aplicación",
-            "Capa de Transporte",
-            "Capa de Internet",
-            "Capa de Enlace de Datos"
-        ],
-        "respuesta_correcta": 2
-    },
-    {
-        "pregunta": "¿Qué elemento de red se menciona específicamente como usuario del modelo TCP/IP?",
-        "opciones": [
-            "Switch",
-            "Firewall",
-            "Router",
-            "Access Point"
-        ],
-        "respuesta_correcta": 3
-    }
-    ]
+  {
+    "pregunta": "¿Cuál es el propósito principal de un mensaje de redireccionamiento ICMPv6?",
+    "opciones": [
+      "Bloquear el tráfico de un host específico",
+      "Informar a un host de una mejor ruta de primer salto para un destino",
+      "Asignar una nueva dirección IPv6 a un host",
+      "Anunciar la caída de un router en la red"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Qué tipo de dispositivo envía un mensaje de redireccionamiento ICMPv6?",
+    "opciones": [
+      "Un switch",
+      "Un host final",
+      "Un router",
+      "Un servidor DNS"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "pregunta": "¿A qué dispositivo se le envía un mensaje de redireccionamiento ICMPv6?",
+    "opciones": [
+      "Al router de destino",
+      "Al host de origen que envió el paquete incorrectamente",
+      "A todos los routers de la red",
+      "Al switch más cercano"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Qué información crítica contiene un mensaje de redireccionamiento para el host?",
+    "opciones": [
+      "La dirección del servidor de actualizaciones",
+      "La dirección MAC del mejor router",
+      "La dirección IP del router que debería usar",
+      "Un mensaje para reiniciar la conexión"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "pregunta": "Un host recibe un paquete en una interfaz. Para enviarlo a su destino, debe usar esa misma interfaz. ¿Debería el router generar un redireccionamiento?",
+    "opciones": [
+      "Sí, siempre",
+      "No, en esta situación no se genera redireccionamiento",
+      "Solo si el paquete es de alta prioridad",
+      "Solo si la red está congestionada"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Qué actualiza un host en su sistema después de recibir un mensaje de redireccionamiento?",
+    "opciones": [
+      "Su dirección IP",
+      "Su tabla de enrutamiento o caché de destino",
+      "El software del sistema operativo",
+      "La configuración del firewall"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Para qué se utiliza el campo 'Target Address' en un mensaje de redireccionamiento ICMPv6?",
+    "opciones": [
+      "Para indicar la dirección del host que envió el paquete original",
+      "Para indicar la dirección del router que es el mejor siguiente salto",
+      "Para indicar la dirección de destino final del paquete",
+      "Para indicar la dirección del administrador de la red"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Cuál es el objetivo final del mecanismo de redireccionamiento en IPv6?",
+    "opciones": [
+      "Aumentar la seguridad de la red",
+      "Optimizar la ruta de los paquetes y evitar saltos innecesarios",
+      "Distribuir la carga de trabajo entre varios routers",
+      "Filtrar contenido no deseado"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "Si un router recibe un paquete que debería haber sido enviado a otro router en el mismo enlace, ¿qué hace el primer router?",
+    "opciones": [
+      "Descarta el paquete inmediatamente",
+      "Lo reenvía al router correcto y envía un mensaje de redireccionamiento al host de origen",
+      "Solicita al host que reenvíe el paquete",
+      "Lo devuelve al host de origen con un mensaje de error"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿El uso de mensajes de redireccionamiento ICMPv6 es considerado seguro en todas las redes?",
+    "opciones": [
+      "Sí, es un protocolo completamente seguro",
+      "No, puede ser explotado para ataques de 'hombre en el medio' (man-in-the-middle)",
+      "Sí, porque está cifrado por defecto",
+      "No, porque consume demasiado ancho de banda"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Qué protocolo utiliza el redireccionamiento para comunicar la información de la ruta?",
+    "opciones": [
+      "TCP",
+      "UDP",
+      "ARPv6",
+      "ICMPv6"
+    ],
+    "respuesta_correcta": 4
+  },
+  {
+    "pregunta": "¿Un mensaje de redireccionamiento informa al host sobre una ruta mejor para todos los destinos futuros?",
+    "opciones": [
+      "Sí, cambia la puerta de enlace predeterminada para todo el tráfico",
+      "No, solo informa sobre la ruta para la dirección de destino específica del paquete original",
+      "Sí, pero solo por un período de 5 minutos",
+      "No, el host debe solicitar la información para cada destino"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Qué campo del mensaje de redireccionamiento ICMPv6 contiene la dirección de destino para la cual se aplica la redirección?",
+    "opciones": [
+      "Source Address",
+      "Target Address",
+      "Destination Address",
+      "Next-Hop Address"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "pregunta": "¿Es obligatorio para un host seguir la recomendación de un mensaje de redireccionamiento?",
+    "opciones": [
+      "Sí, el estándar IPv6 lo exige",
+      "No, un host puede optar por ignorar el mensaje",
+      "Solo si el mensaje proviene del router predeterminado",
+      "Sí, de lo contrario su conexión será terminada"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿En qué tipo de topología de red son más comunes los redireccionamientos ICMPv6?",
+    "opciones": [
+      "En redes con un único router",
+      "En redes donde hay múltiples routers en el mismo segmento de red",
+      "En redes inalámbricas exclusivamente",
+      "En conexiones punto a punto"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Un router enviará un redireccionamiento para una dirección de destino que está en un enlace diferente al del host?",
+    "opciones": [
+      "Sí, para cualquier destino",
+      "No, la nueva ruta debe estar en el mismo enlace que el host",
+      "Solo si tiene permiso del administrador",
+      "Solo para direcciones multicast"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "pregunta": "¿Qué sucede con el paquete original que provocó el mensaje de redireccionamiento?",
+    "opciones": [
+      "Se descarta y el host debe reenviarlo",
+      "Se almacena hasta que el host confirma la nueva ruta",
+      "El router lo reenvía al destino correcto",
+      "Se devuelve al origen con un error"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "pregunta": "¿Cuál es el número de tipo (Type) para un mensaje de redireccionamiento en ICMPv6?",
+    "opciones": [
+      "128",
+      "129",
+      "137",
+      "134"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "pregunta": "Para que un router envíe un redireccionamiento, la dirección de origen del paquete debe ser...",
+    "opciones": [
+      "una dirección multicast",
+      "una dirección anycast",
+      "un vecino en el mismo enlace",
+      "una dirección de otra subred"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "pregunta": "¿Qué ocurre si un host sigue enviando paquetes a través del router incorrecto después de recibir un redireccionamiento?",
+    "opciones": [
+      "El router bloqueará al host permanentemente",
+      "El router podría seguir reenviando los paquetes y enviando más mensajes de redireccionamiento",
+      "La conexión de red del host se desactivará",
+      "El switch aislará al host en una VLAN de cuarentena"
+    ],
+    "respuesta_correcta": 2
+  }
+]
     random.shuffle(preguntas)
     for pregunta in preguntas:
         pregunta['respuesta_correcta'] = pregunta['opciones'][pregunta['respuesta_correcta'] - 1]
